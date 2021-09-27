@@ -1,19 +1,19 @@
 //https://www.eclipse.org/paho/clients/js/
 
-function LED1_On() {
+function historial1() {
 	//alert("led on");
-	console.log("led on");
+	console.log("Obteniendo historial 1 .....");
 	//document.getElementById("sensor").innerHTML="led on";
-	message = new Paho.MQTT.Message("ON");
-    	message.destinationName = "lfrenteriax@hotmail.com/test1";
+	message = new Paho.MQTT.Message("historial1");
+    	message.destinationName = "jfjacome.fie@unach.edu.ec/historial";
     	client.send(message);
   
 }
-function LED1_Off(){	
+function historial2(){	
 	//alert("led off");
-	console.log("led off");
-	message = new Paho.MQTT.Message("OFF");
-    	message.destinationName = "lfrenteriax@hotmail.com/test1";
+	console.log("Obteniendo historial 2 .....");
+	message = new Paho.MQTT.Message("historial2");
+    	message.destinationName = "jfjacome.fie@unach.edu.ec/historial";
     	client.send(message);
 	//document.getElementById("sensor").innerHTML="led off";
 }
@@ -33,8 +33,8 @@ function LED1_Off(){
   client.onMessageArrived = onMessageArrived;
   var options = {
    useSSL: false,
-    userName: "lfrenteriax@hotmail.com",
-    password: "lfrenteriax",
+    userName: "jfjacome.fie@unach.edu.ec",
+    password: "jimmy1996",
     onSuccess:onConnect,
     onFailure:doFail
   }
@@ -47,9 +47,9 @@ function LED1_Off(){
     // Once a connection has been made, make a subscription and send a message.
     console.log("Conectado...");
 	
-    client.subscribe("lfrenteriax@hotmail.com/test");
-    message = new Paho.MQTT.Message("hola desde la web");
-    message.destinationName = "lfrenteriax@hotmail.com/test1";
+    client.subscribe("jfjacome.fie@unach.edu.ec/historial");
+   // message = new Paho.MQTT.Message("hola desde la web");
+   //message.destinationName = "jfjacome.fie@unach.edu.ec/test1";
     client.send(message);
 	
   }
@@ -69,6 +69,13 @@ function LED1_Off(){
   // called when a message arrives
   function onMessageArrived(message) {
     console.log("onMessageArrived:"+message.payloadString);
-	  document.getElementById("sensor").innerHTML=message.payloadString;
+	  sms=message.payloadString;
+	  if(sms[7]=="1"){
+	   document.getElementById("historial1").innerHTML=sms;
+	  }
+	   if(sms[7]=="2"){
+	   document.getElementById("historial2").innerHTML=message.payloadString;
+	  }
+	 
   }
   
