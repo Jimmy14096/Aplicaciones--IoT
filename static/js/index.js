@@ -1,18 +1,32 @@
 //https://www.eclipse.org/paho/clients/js/
-
+var cnt=0;
 function historial1() {
 	//alert("led on");
-	console.log("Obteniendo historial 1 .....");
-	//document.getElementById("sensor").innerHTML="led on";
-	message = new Paho.MQTT.Message("historial1");
-    	message.destinationName = "jfjacome.fie@unach.edu.ec/historial";
+	//console.log("Obteniendo historial 1 .....");
+	console.log("Obteniendo CONTROL LED .....");
+	
+	if(cnt==0){
+	message = new Paho.MQTT.Message("ON");
+    	message.destinationName = "jfjacome.fie@unach.edu.ec/led";
     	client.send(message);
+	cnt=cnt+1;
+	}
+	else{
+	message = new Paho.MQTT.Message("OFF");
+    	message.destinationName = "jfjacome.fie@unach.edu.ec/led";
+    	client.send(message);
+	cnt=0;
+	}
+	
+	//document.getElementById("sensor").innerHTML="led on";
+	
+	
   
 }
 function historial2(){	
 	//alert("led off");
 	console.log("Obteniendo historial 2 .....");
-	message = new Paho.MQTT.Message("historial2");
+	message = new Paho.MQTT.Message("historial");
     	message.destinationName = "jfjacome.fie@unach.edu.ec/historial";
     	client.send(message);
 	//document.getElementById("sensor").innerHTML="led off";
@@ -47,10 +61,15 @@ function historial2(){
     // Once a connection has been made, make a subscription and send a message.
     console.log("Conectado...");
 	
-    client.subscribe("jfjacome.fie@unach.edu.ec/historial");
+    client.subscribe("jfjacome.fie@unach.edu.ec/led");
+    client1.subscribe("jfjacome.fie@unach.edu.ec/historial");
+	  
     message = new Paho.MQTT.Message("hola desde la web");
     message.destinationName = "jfjacome.fie@unach.edu.ec/historial";
+    message1 = new Paho.MQTT.Message("hola desde la web");
+    message1.destinationName = "jfjacome.fie@unach.edu.ec/led";
     client.send(message);
+    client1.send(message1);
 	
   }
 
