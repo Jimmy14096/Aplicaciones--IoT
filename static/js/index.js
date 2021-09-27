@@ -11,7 +11,7 @@ function historial1() {
     	client.send(message);
 	cnt=cnt+1;
 	}
-	elseif(cnt==1){
+	else if(cnt==1){
 	message = new Paho.MQTT.Message("OFF");
     	message.destinationName = "jfjacome.fie@unach.edu.ec/led";
     	client.send(message);
