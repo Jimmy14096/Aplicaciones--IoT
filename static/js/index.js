@@ -86,7 +86,7 @@ function historial2(){
   function onMessageArrived(message) {
     console.log("onMessageArrived:"+message.payloadString);
 	  sms=message.payloadString;
-	  numero=length(sms);
+	  numero=sms.length;
 	  if(sms[7]=="1"){
 	   document.getElementById("historial1").innerHTML=sms;
 	  }
