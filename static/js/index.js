@@ -48,8 +48,8 @@ function historial2(){
     console.log("Conectado...");
 	
     client.subscribe("jfjacome.fie@unach.edu.ec/historial");
-   // message = new Paho.MQTT.Message("hola desde la web");
-   //message.destinationName = "jfjacome.fie@unach.edu.ec/test1";
+    message = new Paho.MQTT.Message("hola desde la web");
+    message.destinationName = "jfjacome.fie@unach.edu.ec/historial";
     client.send(message);
 	
   }
