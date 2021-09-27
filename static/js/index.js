@@ -89,12 +89,16 @@ function historial2(){
   function onMessageArrived(message) {
     console.log("onMessageArrived:"+message.payloadString);
 	  sms=message.payloadString;
+	  numero=length(sms);
 	  if(sms[7]=="1"){
 	   document.getElementById("historial1").innerHTML=sms;
 	  }
 	   if(sms[7]=="2"){
 	   document.getElementById("historial2").innerHTML=message.payloadString;
 	  }
-	 
+	   if(numero==6 || numero==7){
+	    document.getElementById("LED").innerHTML=message.payloadString;
+	   }
+		  
   }
   
