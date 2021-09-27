@@ -11,12 +11,12 @@ function historial1() {
     	client.send(message);
 	cnt=cnt+1;
 	}
-	else{
+/*	else{
 	message = new Paho.MQTT.Message("OFF");
     	message.destinationName = "jfjacome.fie@unach.edu.ec/led";
     	client.send(message);
 	cnt=0;
-	}
+	}*/
 	
 	//document.getElementById("sensor").innerHTML="led on";
 	
