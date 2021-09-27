@@ -62,6 +62,7 @@ function historial2(){
     console.log("Conectado...");
 	
     client.subscribe("jfjacome.fie@unach.edu.ec/led");
+    client.subscribe("jfjacome.fie@unach.edu.ec/historial");
     message = new Paho.MQTT.Message("hola desde la web");
     message.destinationName = "jfjacome.fie@unach.edu.ec/historial";
  
