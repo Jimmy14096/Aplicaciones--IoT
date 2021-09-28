@@ -88,6 +88,26 @@ function historial2(){
     console.log("onMessageArrived:"+message.payloadString);
 	  sms=message.payloadString;
 	  numero=sms.length;
+	  
+	  if (message.payloadString=="Sensor 1--- Activado                                         FECHA:                                      ") { 
+	  document.getElementById("historial1").innerHTML=message.payloadString;
+	  }
+	  if (message.payloadString=="Sensor 1--- Desactivado                                   FECHA:                                      ") { 
+	  document.getElementById("historial1").innerHTML=message.payloadString;
+	  }
+	  
+	  if (message.payloadString=="Sensor 2--- Activado                                        FECHA:                                      ") { 
+	  document.getElementById("historial2").innerHTML=message.payloadString;
+	  }
+	  if (message.payloadString=="Sensor 2--- Desactivado                                   FECHA:                                      ") { 
+	  document.getElementById("historial2").innerHTML=message.payloadString;
+	  }
+	  
+	  /*
+	    if(sms[7]=="1"){
+	   document.getElementById("historial1").innerHTML=sms;
+	  }
+	  
 	  if(sms[7]=="1"){
 	   document.getElementById("historial1").innerHTML=sms;
 	  }
@@ -96,7 +116,7 @@ function historial2(){
 	  }
 	   if(numero==6 || numero==7){
 	    document.getElementById("LED").innerHTML=message.payloadString;
-	   }
+	   }*/
 		  
   }
   
